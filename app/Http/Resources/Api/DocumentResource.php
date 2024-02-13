@@ -15,7 +15,7 @@ class DocumentResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $activeFiscalYearId = FiscalYear::where('is_active', true)->pluck('id')->first();
+
         return [
             'fiscal_year_id' => $this->fiscal_year_id ?? '',
             'title' => $this->title ?? '',
@@ -23,7 +23,6 @@ class DocumentResource extends JsonResource
             'cover_page' => $this->cover_page ?? '',
             'cover_page_url' => $this->getCoverUrlAttribute() ?? '',
             'sections' => SectionResource::collection($this->sections->load('sections', 'uploads')),
-            'active_fiscal_year_id' => $activeFiscalYearId ?? null,
         ];
     }
 }

@@ -16,6 +16,16 @@ class FiscalYear extends Model
         'is_active'
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::saving(function ($fiscalYear) {
+            if ($fiscalYear->is_active) {
+                static::where('id', '!=', $fiscalYear->id)->update(['is_active' => false]);
+            }
+        });
+    }
+
     public function documents(): HasMany
     {
         return $this->hasMany(Document::class);
