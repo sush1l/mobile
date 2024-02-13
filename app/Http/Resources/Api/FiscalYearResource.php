@@ -15,7 +15,8 @@ class FiscalYearResource extends JsonResource
     public function toArray(Request $request): array
     {
         return[
-          'year' => $this->year ?? ''
+          'year' => $this->year ?? '',
+            'is_active'=>$this->is_active ?? ''
         ];
     }
 }

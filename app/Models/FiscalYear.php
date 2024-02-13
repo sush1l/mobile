@@ -12,7 +12,8 @@ class FiscalYear extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'year'
+        'year',
+        'is_active'
     ];
 
     public function documents(): HasMany

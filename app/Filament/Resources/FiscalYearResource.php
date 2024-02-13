@@ -17,7 +17,7 @@ class FiscalYearResource extends Resource
 {
     protected static ?string $model = FiscalYear::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -26,6 +26,8 @@ class FiscalYearResource extends Resource
                 Forms\Components\TextInput::make('year')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Toggle::make('is_active')
+                    ->required(),
             ]);
     }
 
@@ -47,6 +49,8 @@ class FiscalYearResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\IconColumn::make('is_active')
+                    ->boolean(),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),

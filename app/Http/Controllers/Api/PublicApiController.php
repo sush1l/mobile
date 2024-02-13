@@ -14,8 +14,11 @@ class PublicApiController extends Controller
 {
     public function document(Request $request): AnonymousResourceCollection
     {
-        $fiscalYearId = $request->query('fiscal_year_id');
-        $documents = $fiscalYearId ? Document::where('fiscal_year_id', $fiscalYearId)->get() : Document::all();
+        $activeFiscalYearId = FiscalYear::where('is_active', true)->pluck('id')->first();
+        $documents = $activeFiscalYearId
+            ? Document::where('fiscal_year_id', $activeFiscalYearId)->get()
+            : Document::all();
+
         return DocumentResource::collection($documents);
     }
 
