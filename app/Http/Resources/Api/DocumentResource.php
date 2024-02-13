@@ -19,6 +19,7 @@ class DocumentResource extends JsonResource
             'title' => $this->title ?? '',
             'publish_date' => $this->publish_date ?? '',
             'cover_page' => $this->cover_page ?? '',
+            'cover_page_url' =>$this->getCoverUrlAttribute() ?? '',
             'sections' => SectionResource::collection($this->sections->load('sections','uploads'))
         ];
     }

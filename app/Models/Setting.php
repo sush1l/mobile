@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Setting extends Model
@@ -16,7 +17,14 @@ class Setting extends Model
         'phone_no',
         'email',
         'address',
-        'cover_image'
+        'cover_image',
+        'fiscal_year_id',
     ];
+
+
+    public function fiscalYear(): BelongsTo
+    {
+        return $this->belongsTo(FiscalYear::class);
+    }
 
 }

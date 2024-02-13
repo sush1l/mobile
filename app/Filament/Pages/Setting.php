@@ -3,6 +3,7 @@
 namespace App\Filament\Pages;
 
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Pages\Page;
 use Filament\Forms\Form;
@@ -38,6 +39,10 @@ class Setting extends Page implements HasForms
     {
         return $form
             ->schema([
+                Select::make('fiscal_year_id')
+                    ->label('Fiscal Year')
+                    ->options(\App\Models\FiscalYear::all()->pluck('year', 'id'))
+                    ->required(),
                 TextInput::make('office_header')
                     ->label('Office Name')
                     ->required(),

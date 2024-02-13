@@ -19,4 +19,9 @@ class FiscalYear extends Model
     {
         return $this->hasMany(Document::class);
     }
+
+    public function settings(): HasMany
+    {
+        return $this->hasMany(Setting::class);
+    }
 }
