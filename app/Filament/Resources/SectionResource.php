@@ -38,7 +38,6 @@ class SectionResource extends Resource
                         Forms\Components\FileUpload::make('file')
                             ->disk('public')
                             ->directory('documents')
-                            ->maxSize(2048)
                             ->required(),
                     ])->columnSpanFull()
 

@@ -23,7 +23,7 @@ class FiscalYearResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
+                Forms\Components\TextInput::make('year')
                     ->required()
                     ->maxLength(255),
             ]);
@@ -33,7 +33,7 @@ class FiscalYearResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')
+                Tables\Columns\TextColumn::make('year')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('deleted_at')
                     ->dateTime()

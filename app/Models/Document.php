@@ -22,6 +22,7 @@ class Document extends Model
         'is_active',
     ];
 
+
     public function fiscalYear(): BelongsTo
     {
         return $this->belongsTo(FiscalYear::class);

@@ -23,7 +23,7 @@ class DocumentResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('fiscal_year_id')
-                    ->relationship('fiscalYear', 'title')
+                    ->relationship('fiscalYear', 'year')
                     ->required(),
                 Forms\Components\TextInput::make('title')
                     ->required()
@@ -31,7 +31,6 @@ class DocumentResource extends Resource
                 Forms\Components\FileUpload::make('cover_page')
                     ->image()
                     ->imageEditor()
-                    ->maxSize(2048)
                     ->required(),
                 Forms\Components\TextInput::make('publish_date')
                     ->required()
@@ -47,7 +46,7 @@ class DocumentResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('fiscalYear.title')
+                Tables\Columns\TextColumn::make('fiscalYear.year')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),

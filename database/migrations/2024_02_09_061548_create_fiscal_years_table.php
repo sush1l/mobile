@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('fiscal_years', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('year');
             $table->softDeletes();
             $table->timestamps();
         });
