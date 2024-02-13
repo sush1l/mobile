@@ -17,6 +17,7 @@ class FileResource extends JsonResource
     {
         return [
             'file' => $this->file ?? '',
+            'file_url'=> $this->file_url
         ];
     }
 }

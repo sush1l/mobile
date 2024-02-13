@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Facades\Storage;
 
 class Upload extends Model
 {
@@ -12,6 +13,15 @@ class Upload extends Model
         'uploadable_id',
         'file',
     ];
+
+    public function getFileUrlAttribute(): ?string
+    {
+        if ($this->file) {
+            return Storage::disk('public')->url($this->file);
+        }
+
+        return null;
+    }
 
     public function uploadable(): MorphTo
     {

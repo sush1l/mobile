@@ -17,7 +17,7 @@ class SectionResource extends JsonResource
         return [
             'title' => $this->title ?? '',
             'section_id' => $this->section_id ?? '',
-            'files'=>$this->whenLoaded('uploads'),
+            'files'=>FileResource::collection($this->whenLoaded('uploads')),
             $this->when(count($this->sections) > 0,[
                 'sections'=>SectionResource::collection($this->sections?->load('sections','uploads'))
             ])
