@@ -15,7 +15,7 @@ class DocumentResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'fiscalYear' => FiscalYearResource::make($this->whenLoaded('fiscalYear')),
+            'fiscal_year_id' => $this->fiscal_year_id ?? '',
             'title' => $this->title ?? '',
             'publish_date' => $this->publish_date ?? '',
             'cover_page' => $this->cover_page ?? '',
